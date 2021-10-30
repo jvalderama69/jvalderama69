@@ -1,0 +1,66 @@
+{% extends 'base.html' %}
+{% block title %}
+    Registro
+{% endblock %}
+
+{% block content %}
+<body class="text-center">
+    <div class="container">
+        <form method="POST" class="form-register" style="color:white">
+            {{ form.hidden_tag() }}
+            <br>    
+            <h2 class="h3 mb-3 font-weight-normal">
+                Favor registrese como usuario
+            </h2>
+            <br>
+            <table>
+                <tr>
+                    <td style="width:200px;">
+                        {{ form.tipoId.label() }}
+                        {{ form.tipoId(class="form-control") }}            
+                    </td>
+                    <td style="width:130px;">
+                        {{ form.ident.label() }}
+                        {{ form.ident(class="form-control", placeholder="Identificación") }}            
+                    </td>
+                    <td style="width:120px;">
+                        {{ form.tipoUsuario.label() }}
+                        {{ form.tipoUsuario(class="form-control", placeholder="P/D") }}            
+                    </td>
+                    <td style="width:220px;">
+                        {{ form.nombre.label() }}
+                        {{ form.nombre(class="form-control", placeholder="Nombre") }}            
+                    </td>
+                    <td style="width:440px;">
+                        {{ form.apellidos.label() }}
+                        {{ form.apellidos(class="form-control", placeholder="Apellidos") }}            
+                    </td>
+                </tr>
+            </table>
+            <table>
+                <tr>
+                    {{ form.email_address.label() }}
+                    {{ form.email_address(class="form-control", placeholder="@") }}                            
+                </tr>
+                <tr>
+                    {{ form.password1.label() }}
+                    {{ form.password1(class="form-control", placeholder="*******") }}        
+                </tr>
+                <tr>
+                    {{ form.password2.label() }}
+                    {{ form.password2(class="form-control", placeholder="*******") }}        
+                </tr>
+            </table>
+            <div class="checkbox mb-3">
+                <h6>Ya se registró?</h6>
+                <a class="btn btn-sm btn-secondary" href="{{ url_for('login_page') }}">Inicie sesión</a>
+             </div>
+            <table>
+                <tr>
+                    {{ form.submit(class="btn btn-lg btn-block btn-primary") }}
+                </tr>
+            </table>
+        </form>
+    </div>
+</body>
+{% endblock %}

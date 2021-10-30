@@ -1,0 +1,64 @@
+{% extends 'base.html' %}
+{% block title %}
+  Doctor
+{% endblock %}
+
+{% block content %}
+<div class="row" style="margin-top: 20px; margin-left: 20px;">
+    <div class="col-8">
+        <h2>Citas Pendientes</h2>
+        <p>Haga clic en el botón para ingresar sus comentarios</p>
+        <br>
+        <table class="table table-hover table-dark">
+            <thead>
+                <tr>
+                    <!-- Your Columns HERE -->
+                    <th scope="col">Fecha</th>
+                    <th scope="col">Hora</th>
+                    <th scope="col">Paciente</th>
+                    <th scope="col">Calif.</th>
+                    <th scope="col">Comentarios</th>
+                    <th scope="col">Opciones</th>
+                </tr>
+            </thead>
+            <tbody>
+                <!-- Your rows inside the table HERE: -->
+                {% for cita in citas %}
+                {% include 'includes/doctor_modals.html' %}
+                    <tr>
+                        <td>{{ cita.fecha }}</td>
+                        <td>{{ cita.hora }}</td>
+                        <td>{{ cita.idPaciente }}</td>                        
+                        <td>{{ cita.calificacion }}</td>
+                        <td>{{ cita.comentarios }}</td>
+                        <td>
+                        <button class="btn btn-outline btn-info" data-toggle="modal" data-target="#Modal-Comentar-{{cita.id}}">Comentarios</button>
+                        </td>
+                    </tr>
+                {% endfor %}
+            </tbody>
+        </table>        
+    </div>
+    <div class="col-4">
+        <h2>Histórico de citas</h2>
+        <p>Consultas anteriores</p>
+        <br>
+        <table class="text-center">
+            <tr>
+                <th>Fecha</th>
+                <th>Hora</th>
+                <th>Calificación</th>
+                <th>Comentarios</th>
+            </tr>
+           {% for cit in anteriores %}
+            <tr>
+                <td>{{cit.fecha}} </td>
+                <td>{{cit.hora}} </td>
+                <td>{{cit.calificacion}} </td>
+                <td>{{cit.comentarios}} </td>
+            </tr>
+            {% endfor %}
+        </table>
+    </div>
+</div>
+{% endblock %}

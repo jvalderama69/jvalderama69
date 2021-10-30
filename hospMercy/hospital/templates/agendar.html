@@ -1,0 +1,29 @@
+{% extends 'base.html' %}
+{% block title %}
+    Agendar
+{% endblock %}
+
+{% block content %}
+<body class="text-center">
+    <div class="container">
+        <form method="POST" style="color:white">
+            {{ form.hidden_tag() }}
+
+            <h2 class="h3 mb-3 font-weight-normal">
+                Por favor, registre su cita
+            </h2>
+            <br>
+            {{ form.fecha.label() }}
+            {{ form.fecha(class="form-control", placeholder="dd/mm/yyyy") }}
+
+            {{ form.hora.label() }}
+            {{ form.hora(class="form-control", placeholder="hh:mm") }}
+            <br>
+            {{ form.doctor.label() }}
+            {{ form.doctor(class="form-control") }}
+            <br>
+            {{ form.submit(class="btn btn-lg btn-block btn-primary") }}
+        </form>
+    </div>
+</body>
+{% endblock %}
